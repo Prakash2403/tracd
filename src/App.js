@@ -1,4 +1,4 @@
-import AutocompleteDropDown from "./components/dropdown";
+import AutocompleteDropDown from "./lib/components/dropdown";
 import { useState } from "react";
 
 const people = [
