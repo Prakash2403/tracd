@@ -1,8 +1,19 @@
 {
-  "name": "multi-dropdown",
+  "name": "tracd",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "author": "Prakash2403",
+  "keywords": ["React", "Tailwind", "Autocomplete", "Dropdown", "FuseJS"],
+  "description": "An autocomplete dropdown component built using ReactJS, Tailwind and FuseJS",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [ "dist", "README.md" ],
+  "repository": {
+      "type": "git",
+      "url": "git+https://github.com/prakash2403/tracd.git"
+  },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@headlessui/react": "^1.4.3",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -15,7 +26,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rm -rf dist && NODE_ENV=production babel src/components --out-dir dist --copy-files",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -48,6 +59,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.15"
