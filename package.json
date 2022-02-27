@@ -10,7 +10,7 @@
     "Dropdown",
     "FuseJS"
   ],
-  "description": "An autocomplete dropdown component built using ReactJS, Tailwind and FuseJS",
+  "description": "An autocomplete dropdown component built using ReactJS, Tailwind and FuseJS [WIP]",
   "main": "dist/index.js",
   "license": "MIT",
   "files": [
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@headlessui/react": "^1.4.3",
+    "@headlessui/react": "^1.4.2",
     "fuse.js": "^6.5.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
