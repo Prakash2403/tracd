@@ -1,16 +1,25 @@
 {
   "name": "tracd",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "author": "Prakash2403",
-  "keywords": ["React", "Tailwind", "Autocomplete", "Dropdown", "FuseJS"],
+  "keywords": [
+    "React",
+    "Tailwind",
+    "Autocomplete",
+    "Dropdown",
+    "FuseJS"
+  ],
   "description": "An autocomplete dropdown component built using ReactJS, Tailwind and FuseJS",
   "main": "dist/index.js",
   "license": "MIT",
-  "files": [ "dist", "README.md" ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "repository": {
-      "type": "git",
-      "url": "git+https://github.com/prakash2403/tracd.git"
+    "type": "git",
+    "url": "git+https://github.com/prakash2403/tracd.git"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
