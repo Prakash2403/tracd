@@ -2,26 +2,26 @@ import AutocompleteDropDown from "./lib/components/dropdown";
 import { useState } from "react";
 
 const people = [
-  { id: 1, name: "Durward Reynolds" },
-  { id: 2, name: "Kenton Towne" },
-  { id: 3, name: "Therese Wunsch" },
-  { id: 4, name: "Benedict Kessler" },
-  { id: 5, name: "Katelyn Rohan" },
-  { id: 10, name: "Durward Reynolds" },
-  { id: 20, name: "Kenton Towne" },
-  { id: 30, name: "Therese Wunsch" },
-  { id: 40, name: "Benedict Kessler" },
-  { id: 50, name: "Katelyn Rohan" },
-  { id: 100, name: "Durward Reynolds" },
-  { id: 200, name: "Kenton Towne" },
-  { id: 300, name: "Therese Wunsch" },
-  { id: 400, name: "Benedict Kessler" },
-  { id: 500, name: "Katelyn Rohan" },
-  { id: 1000, name: "Durward Reynolds" },
-  { id: 2000, name: "Kenton Towne" },
-  { id: 3000, name: "Therese Wunsch" },
-  { id: 4000, name: "Benedict Kessler" },
-  { id: 5000, name: "Katelyn Rohan" },
+  { count: 1, key: "Durward Reynolds" },
+  { count: 2, key: "Kenton Towne" },
+  { count: 3, key: "Therese Wunsch" },
+  { count: 4, key: "Benedict Kessler" },
+  { count: 5, key: "Katelyn Rohan" },
+  { count: 10, key: "Durward Reynolds" },
+  { count: 20, key: "Kenton Towne" },
+  { count: 30, key: "Therese Wunsch" },
+  { count: 40, key: "Benedict Kessler" },
+  { count: 50, key: "Katelyn Rohan" },
+  { count: 100, key: "Durward Reynolds" },
+  { count: 200, key: "Kenton Towne" },
+  { count: 300, key: "Therese Wunsch" },
+  { count: 400, key: "Benedict Kessler" },
+  { count: 500, key: "Katelyn Rohan" },
+  { count: 1000, key: "Durward Reynolds" },
+  { count: 2000, key: "Kenton Towne" },
+  { count: 3000, key: "Therese Wunsch" },
+  { count: 4000, key: "Benedict Kessler" },
+  { count: 5000, key: "Katelyn Rohan" },
 ];
 
 const App = () => {
@@ -32,14 +32,14 @@ const App = () => {
     <div className="max-w-md">
       <AutocompleteDropDown
         listValues={people}
-        displayProp="name"
+        displayProp="key"
         label="People"
         selected={selected_1}
         setSelected={setSelected_1}
       />
       <AutocompleteDropDown
         listValues={people}
-        displayProp="name"
+        displayProp="key"
         label="People"
         selected={selected_2}
         setSelected={setSelected_2}

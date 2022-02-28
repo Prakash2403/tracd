@@ -36,7 +36,7 @@ export default function AutocompleteDropDown({
   const { ref, isComponentVisible } = useComponentVisible(false);
   const handleChange = (item) => {
     const newValue = selected.includes(item)
-      ? selected.filter((v) => v.id !== item.id)
+      ? selected.filter((v) => v[displayProp] !== item[displayProp])
       : selected.concat(item);
     setSelected(newValue);
   };
