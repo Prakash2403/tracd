@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Listbox } from "@headlessui/react";
 import Fuse from "fuse.js";
 
@@ -43,10 +43,13 @@ export default function AutocompleteDropDown({
 
   const [valuesToShow, setValuesToShow] = useState(listValues);
 
-  const options = {
-    keys: [displayProp],
-  };
-  const fuse = new Fuse(listValues, options); // TODO Memoize the object creation
+  const fuse = useMemo(
+    () =>
+      new Fuse(listValues, {
+        keys: [displayProp],
+      }),
+    [listValues, displayProp]
+  );
 
   const handleInputChange = (e) => {
     if (
