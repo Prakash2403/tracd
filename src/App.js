@@ -11,7 +11,7 @@ const App = () => {
 
   useEffect(() => {
     let fakeP = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100000; i++) {
       fakeP.push({ key: faker.name.findName() });
     }
     setPeople_1(fakeP);

@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Listbox } from "@headlessui/react";
-import Fuse from "fuse.js";
+import { Index } from "flexsearch";
 
 import { useComponentVisible } from "./useComponentVisible";
 
@@ -32,6 +32,7 @@ export default function AutocompleteDropDown({
   displayProp,
   selected,
   setSelected,
+  numHitsToShow = 20,
 }) {
   const { ref, isComponentVisible } = useComponentVisible(false);
   const handleChange = (item) => {
@@ -43,13 +44,17 @@ export default function AutocompleteDropDown({
 
   const [valuesToShow, setValuesToShow] = useState(listValues);
 
-  const fuse = useMemo(
-    () =>
-      new Fuse(listValues, {
-        keys: [displayProp],
-      }),
-    [listValues, displayProp]
-  );
+  const index = useMemo(() => {
+    const options = {
+      tokenize: "forward",
+      cache: 1000,
+    };
+    let idx = new Index(options);
+    listValues.forEach((v, i) => {
+      idx.add(i, v[displayProp]);
+    });
+    return idx;
+  }, [listValues, displayProp]);
 
   const handleInputChange = (e) => {
     if (
@@ -57,22 +62,29 @@ export default function AutocompleteDropDown({
       e.target.value === null ||
       e.target.value === undefined
     )
-      setValuesToShow([
-        ...selected,
-        ...listValues.filter((l) => !selected.includes(l)),
-      ]);
+      setValuesToShow(
+        [...selected, ...listValues.filter((l) => !selected.includes(l))].slice(
+          0,
+          numHitsToShow
+        )
+      );
     else {
-      const result = fuse.search(e.target.value);
-      setValuesToShow([
-        ...selected,
-        ...result.map((l) => l.item).filter((l) => !selected.includes(l)),
-      ]);
+      const result = index.search(e.target.value);
+      console.log(result);
+      setValuesToShow(
+        [
+          ...selected,
+          ...result
+            .map((l) => listValues[l])
+            .filter((l) => !selected.includes(l)),
+        ].slice(0, numHitsToShow)
+      );
     }
   };
 
   useEffect(() => {
-    setValuesToShow(listValues);
-  }, [listValues]);
+    setValuesToShow(listValues.slice(0, numHitsToShow));
+  }, [listValues, numHitsToShow]);
 
   return (
     <div>
