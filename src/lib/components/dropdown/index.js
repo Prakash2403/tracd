@@ -77,9 +77,9 @@ export default function AutocompleteDropDown({
             </div>
             {isComponentVisible && (
               <Listbox.Options className="border-2 rounded-lg" static>
-                {valuesToShow.map((value) => (
+                {valuesToShow.map((value, idx) => (
                   <Listbox.Option
-                    key={value[displayProp]}
+                    key={idx}
                     value={value}
                     className="p-2 hover:bg-gray-200"
                   >
