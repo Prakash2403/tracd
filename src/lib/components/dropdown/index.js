@@ -54,10 +54,16 @@ export default function AutocompleteDropDown({
       e.target.value === null ||
       e.target.value === undefined
     )
-      setValuesToShow(listValues);
+      setValuesToShow([
+        ...selected,
+        ...listValues.filter((l) => !selected.includes(l)),
+      ]);
     else {
       const result = fuse.search(e.target.value);
-      setValuesToShow(result.map((l) => l.item));
+      setValuesToShow([
+        ...selected,
+        ...result.map((l) => l.item).filter((l) => !selected.includes(l)),
+      ]);
     }
   };
 
@@ -74,7 +80,9 @@ export default function AutocompleteDropDown({
             <div>
               <input
                 type="search"
-                placeholder="Search"
+                placeholder={
+                  selected.map((s) => s[displayProp]).join(", ") || "Search"
+                }
                 className="p-3 border-2 rounded-lg w-full"
                 onChange={handleInputChange}
               />
