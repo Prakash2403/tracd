@@ -46,7 +46,7 @@ export default function AutocompleteDropDown({
   const options = {
     keys: [displayProp],
   };
-  const fuse = new Fuse(listValues, options);
+  const fuse = new Fuse(listValues, options); // TODO Memoize the object creation
 
   const handleInputChange = (e) => {
     if (
