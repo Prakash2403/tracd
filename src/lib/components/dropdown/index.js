@@ -49,7 +49,12 @@ export default function AutocompleteDropDown({
   const fuse = new Fuse(listValues, options);
 
   const handleInputChange = (e) => {
-    if (e.target.value === "") setValuesToShow(listValues);
+    if (
+      e.target.value === "" ||
+      e.target.value === null ||
+      e.target.value === undefined
+    )
+      setValuesToShow(listValues);
     else {
       const result = fuse.search(e.target.value);
       setValuesToShow(result.map((l) => l.item));
@@ -74,7 +79,7 @@ export default function AutocompleteDropDown({
               <Listbox.Options className="border-2 rounded-lg" static>
                 {valuesToShow.map((value) => (
                   <Listbox.Option
-                    key={value.id}
+                    key={value[displayProp]}
                     value={value}
                     className="p-2 hover:bg-gray-200"
                   >
