@@ -30,6 +30,7 @@ export default {
     commonjs({
       include: /node_modules/,
       namedExports: {
+        flexsearch: ["Index"],
         "react-dom": ["createPortal"],
         "react/index.js": [
           "Component",
