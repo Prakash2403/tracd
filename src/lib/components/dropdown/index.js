@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Listbox } from "@headlessui/react";
 import Fuse from "fuse.js";
 
@@ -60,6 +60,10 @@ export default function AutocompleteDropDown({
       setValuesToShow(result.map((l) => l.item));
     }
   };
+
+  useEffect(() => {
+    setValuesToShow(listValues);
+  }, [listValues]);
 
   return (
     <div>
